@@ -36,6 +36,7 @@ autoupdatebackup=FALSE
 backupdate=$(date +'%Y%m%d%H%M')
 backupdirbase="/tmp"
 backupdirtemplate="macports-autoupdate.$backupdate.XXXXX"
+createbackup=FALSE
 
 #------------------------------------------------------------------------------
 #
@@ -346,6 +347,14 @@ fi
 
 install_file $autoupdatepath
 install_file $launchdaemonpath
+
+###############################################################################
+# 
+# make autoupdate scrip executable
+#
+
+printf "Making ${cyan}$autoupdatepath${normal} executable.\n"
+chmod +x $autoupdatepath
 
 ###############################################################################
 # 
