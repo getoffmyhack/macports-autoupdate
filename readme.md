@@ -9,10 +9,13 @@ This script and accompanying launch daemon plist will setup [Macports](https://w
 
 🚨🚨🚨  WARNING!  THE INSTALL MUST BE RUN AS ROOT! 🚨🚨🚨
 
-Please see the detailed description below to understand what is happening, but the TLDR version, it requires root for the following commands:
+Please see the install.sh script plus the detailed description below to understand what is happening, but the TLDR version, it requires root for the following commands:
 ```
 cp macports-autoupdate.zsh /usr/local/bin/
 cp org.macports.autoupdate.plist /Library/LaunchDaemons/
+chmod +x /usr/local/bin/macports-autoupdate.zsh
+sed -i '' 's/__EMAIL__/email@address/' /usr/local/bin/macports-autoupdate.zsh
+set -i '' 's/__HOUR__/{hr}/;s/__MIN__/{mn}/' /Library/LaunchDaemons/org.macports.autoupdate.plist
 launchctl load /Library/LaunchDaemons/org.macports.autoupdate.plist
 ```
 
